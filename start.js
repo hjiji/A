@@ -111,6 +111,13 @@ function goNext(qIdx){
     }
     var status = document.querySelector('.statusBar');
     status.style.width = (100/endPoint) * (qIdx+1) + '%';
+    
+    if (qnaList[qIdx].image) {
+        var img = document.createElement('img');
+        img.src = qnaList[qIdx].image;
+        img.classList.add('qBox-image');
+        q.appendChild(img);
+    }
 }
 
 function begin(){
