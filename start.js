@@ -39,7 +39,7 @@ function fileWrite(content) {
     console.log("fileWrite() : " + content);
     $.ajax({
         type: "GET",
-        url: "https://script.google.com/macros/s/AKfycbxImF9BkkHIJ25RSvPcRkCKUP8FryJW0S3xZUjUIuxUDCkSVt8JAIqezdx1ybckcCSqZg/exec",
+        url: "https://script.google.com/macros/s/AKfycbydO_nNnNopT7nytF_2tB2mNffB4mCNRbDN0fED5X5sQpG_dCOyWKeBpXxD7GDj0_wm/exec",
         data: {
             "결과": content,
             "": "",
