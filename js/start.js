@@ -18,9 +18,7 @@ function setResult(){
         .then((data)=> data.json())
         .then((obj) => {
             obj[point] += 1;
-            console.log("result type : " + point);
             fileWrite(point);
-            console.log("end file write");
         })
 
     var resultImg = document.createElement('img');
@@ -36,7 +34,6 @@ function setResult(){
 }
 
 function fileWrite(content) {
-    console.log("fileWrite() : " + content);
     $.ajax({
         type: "GET",
         url: "https://script.google.com/macros/s/AKfycbydO_nNnNopT7nytF_2tB2mNffB4mCNRbDN0fED5X5sQpG_dCOyWKeBpXxD7GDj0_wm/exec",
@@ -50,11 +47,9 @@ function fileWrite(content) {
         }
     })
 
-    console.log("content를 저장할거에요 : " + content);
 }
 
 function saveFile(contents) {
-    console.log("saveFile + " + contentes);
     const blob = new Blob([contents], { type: 'text/plain' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -97,7 +92,6 @@ function addAnswer(answerText, qIdx, idx){
         setTimeout(() => {
             var target = qnaList[qIdx].a[idx];
             select[target.type[0]] += 1;
-            console.log("select after : " + select);
             for(let i = 0; i < children.length; i++){
                 children[i].style.display = "none";
             }
