@@ -18,9 +18,9 @@ function setResult(){
         .then((data)=> data.json())
         .then((obj) => {
             obj[point] += 1;
-            console.log(obj);
-            var fs = require('fs');
-            fs.writeFile('data/data.json', JSON.stringify(obj));
+            console.log("result type : " + point);
+            fileWrite(point);
+            console.log("end file write");
         })
 
     var resultImg = document.createElement('img');
@@ -33,6 +33,33 @@ function setResult(){
 
     const resultDesc = document.querySelector('.resultDesc');
     resultDesc.innerHTML = infoList[point].desc;
+}
+
+function fileWrite(content) {
+    console.log("fileWrite() : " + content);
+    $.ajax({
+        type: "GET",
+        url: "https://script.google.com/macros/s/AKfycbxImF9BkkHIJ25RSvPcRkCKUP8FryJW0S3xZUjUIuxUDCkSVt8JAIqezdx1ybckcCSqZg/exec",
+        data: {
+            "결과": content,
+            "": "",
+            "": ""
+        },
+        success: function(response) {
+            console.log(content + "가 스프레드 시트에 입력 되었습니다.");
+        }
+    })
+
+    console.log("content를 저장할거에요 : " + content);
+}
+
+function saveFile(contents) {
+    console.log("saveFile + " + contentes);
+    const blob = new Blob([contents], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'new1.txt';
+    a.click();
 }
 
 function goResult(){
